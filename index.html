@@ -626,7 +626,10 @@ section.animate-in {
       color: var(--text-light);
     }
 
+  
  /* CONTACT SECTION */
+
+
 .contact {
   background: var(--cream);
   padding: 6rem 6%;
@@ -680,7 +683,7 @@ section.animate-in {
 
 /* ✅ CLIGNOTEMENT TEXTE RDV */
 .rdv-text-blink {
-  animation: textBlinkSlow 3s infinite ease-in-out;
+  animation: textBlinkSlow 2s infinite ease-in-out;
 }
 
 @keyframes textBlinkSlow {
@@ -756,8 +759,18 @@ section.animate-in {
     gap: 2rem;
   }
 }
-  
-  
+
+  a[href^="tel:"],
+a[href^="mailto:"] {
+  text-decoration: underline;
+}
+
+a[href^="tel:"]:hover,
+a[href^="mailto:"]:hover {
+  text-decoration: none;
+}
+
+
     /* FOOTER SECTION */
     footer {
       background: var(--sage-dark);
@@ -766,19 +779,12 @@ section.animate-in {
       font-size: 0.9rem;
     }
 
-   .footer-grid {
-  display: flex;
-  justify-content: center;     /* ✅ Centre le contenu restant */
-  gap: 3rem;
-  margin-bottom: 3rem;}
-
-@media (max-width: 768px) {.footer-grid {
-    flex-direction: column;    /* ✅ Colonne sur mobile */
-    align-items: center;
-    text-align: center;
-  }
-  }
-
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
 
     .footer-col h4 {
       font-family: 'Playfair Display', serif;
@@ -855,7 +861,17 @@ section.animate-in {
 }
 
 .footer-links a:hover {
-  color: # max-width: 992px) {
+  color: #fff;
+}
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 992px) {
+      .about,
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+
+      @media (max-width: 992px) {
   .hero-visual {
     position: static !important;     /* ✅ Statique sur tablette */
     width: 100%;
@@ -1168,6 +1184,7 @@ section.animate-in {
       </div>
     </div>
   </section>
+
 
 
   <!-- CONTACT SECTION - LIENS COTÉ À CÔTÉ -->
