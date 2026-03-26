@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fathia Ben Kouider — Cabinet de Psychothérapie</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --sage: #7a9e87;
+      --sage-light: #a8c5b0;
+      --sage-dark: #4f7a5e;
+      --cream: #f9f5ef;
+      --warm-white: #fffdf9;
+      --text-dark: #2c2c2c;
+      --text-mid: #5a5a5a;
+      --text-light: #8a8a8a;
+      --accent: #c9a96e;
+      --accent-light: #e8d5b0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--warm-white);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 6%;
+      background: rgba(255, 253, 249, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(122, 158, 135, 0.15);
+      transition: box-shadow 0.3s;
+    }
+
+    nav.scrolled {
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.07);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--sage-dark);
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-mid);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--sage-dark);
+    }
+
+    .nav-cta {
+      background: var(--sage);
+      color: #fff !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 50px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--sage-dark) !important;
+      color: #fff !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--text-dark);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 6% 4rem;
+      background: linear-gradient(135deg, var(--cream) 0%, #eef4f0 60%, #ddeae1 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(168, 197, 176, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: -80px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(201, 169, 110, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      max-width: 580px;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(122, 158, 135, 0.15);
+      color: var(--sage-dark);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--sage-dark);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      margin-bottom: 2.5rem;
+      max-width: 460px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--sage-dark);
+      color: #fff;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      box-shadow: 0 4px 20px rgba(79, 122, 94, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(79, 122, 94, 0.4);
+      background: var(--sage);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--sage-dark);
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 2px solid var(--sage);
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: var(--sage);
+      color: #fff;
+    }
+
+    .hero-visual {
+  position: relative;           /* ✅ Relative au lieu d'absolute */
+  width: min(42%, 480px);
+  max-width: 100%;             /* ✅ Limite la largeur */
+  margin-left: auto;           /* ✅ Centre à droite */
+}
+
+.hero-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 2.5rem 2rem;        /* ✅ Padding réduit horizontal */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: visible;           /* ✅ Visible pour badges */
+  max-width: 400px;            /* ✅ Largeur max */
+  margin: 0 auto;              /* ✅ Centré */
+}
+
+.hero-card-img {
+  width: 100%;
+  height: 220px;               /* ✅ Hauteur réduite */
+  background: linear-gradient(145deg, #c8ddd0, #a8c5b0);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;             /* ✅ Icône plus petite */
+  margin-bottom: 1.2rem;
+}
+
+/* Badges repositionnés */
+.floating-badge {
+  position: absolute;
+  background: #fff;
+  border-radius: 16px;
+  padding: 0.6rem 1rem;        /* ✅ Plus petit */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.badge-top {
+  top: -12px;                  /* ✅ Plus haut, moins large */
+  right: 12px;
+}
+
+.badge-bottom {
+  bottom: -12px;               /* ✅ Plus bas */
+  left: 12px;
+}
+
+    /* STATS SECTION */
+    .stats {
+      background: var(--sage-dark);
+      padding: 3rem 6%;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      color: #fff;
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--accent-light);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    /* COMMON SECTIONS */
+    section {
+      padding: 6rem 6%;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: rgba(122, 158, 135, 0.12);
+      color: var(--sage-dark);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--sage-dark);
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-mid);
+      max-width: 520px;
+      margin-bottom: 3rem;
+    }
+
+/* Animation rehausser les sections au scroll */
+section {
+  padding: 6rem 6%;
+  opacity: 0;              /* ✅ Invisible au départ */
+  transform: translateY(50px); /* ✅ En bas au départ */
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+section.animate-in {
+  opacity: 1;              /* ✅ Visible */
+  transform: translateY(0); /* ✅ Remonte en place */
+}
+
+/* Sections spécifiques qui remontent plus */
+.hero.animate-in {
+  transform: translateY(-10px);
+}
+
+.services.animate-in .service-card,
+.testimonials.animate-in .testimonial-card,
+.about.animate-in {
+  transform: translateY(-20px);
+}
+
+/* Badges qui suivent le mouvement */
+.animate-in .floating-badge,
+.animate-in .about-badge,
+.animate-in .service-card::before {
+  transform: translateY(-8px) !important;
+}
+
+    /* SERVICES SECTION */
+    .services {
+      background: var(--cream);
+    }
+
+    .services-header {
+      text-align: center;
+    }
+
+    .services-header .section-sub {
+      margin: 0 auto 3rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2.2rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid rgba(122, 158, 135, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--sage), var(--accent));
+      transform: scaleX(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, rgba(122, 158, 135, 0.15), rgba(122, 158, 135, 0.05));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.7rem;
+      color: var(--text-dark);
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    /* ABOUT SECTION */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      padding: 6rem 6%;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-img {
+  width: 100%;
+  height: 512px;           /* ✅ Hauteur fixe au lieu d'aspect-ratio */
+  object-fit: cover;       /* ✅ Image bien recadrée */
+  object-position: center; /* ✅ Focus sur le centre */
+  border-radius: 24px;
+  display: block;          /* ✅ Évite les petits espaces */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+    .about-badge {
+      position: absolute;
+      bottom: 30px;
+      right: -20px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.2rem 1.5rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+      text-align: center;
+    }
+
+    .about-badge .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--sage-dark);
+      display: block;
+    }
+
+    .about-badge .lbl {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+    .about-content .section-sub {
+      margin-bottom: 2rem;
+    }
+
+    .about-list {
+      list-style: none;
+      margin-bottom: 2.5rem;
+    }
+
+    .about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      color: var(--text-mid);
+    }
+
+    .about-list li::before {
+      content: '✓';
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      background: var(--sage);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+.about-visual picture {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.about-visual img {
+  transition: transform 0.3s ease;
+}
+
+.about:hover .about-visual img {
+  transform: scale(1.05);  /* ✅ Petit effet zoom au survol */
+}
+
+    /* TESTIMONIALS SECTION */
+    .testimonials {
+      background: var(--warm-white);
+      text-align: center;
+      padding: 6rem 6%;
+    }
+
+    .testimonials-header {
+      max-width: 600px;
+      margin: 0 auto 3rem;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .testimonial-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #c8ddd0, #a8c5b0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .testimonial-author-name {
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+    }
+
+    .testimonial-author-role {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+ /* CONTACT SECTION */
+.contact {
+  background: var(--cream);
+  padding: 6rem 6%;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--sage-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sage-dark);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.contact-text {
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  flex: 1;
+}
+
+/* ✅ CLIGNOTEMENT TEXTE RDV */
+.rdv-text-blink {
+  animation: textBlinkSlow 3s infinite ease-in-out;
+}
+
+@keyframes textBlinkSlow {
+  0%, 60%, 100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+  0% { 
+    opacity: 0.6; 
+    transform: translateY(-2px); 
+  }
+}
+
+/* ✅ RDV mise en valeur */
+.contact-item:last-child .contact-icon {
+  background: var(--accent);
+  color: var(--sage-dark);
+}
+
+.contact-item:last-child .contact-text {
+  font-weight: 500;
+}
+
+/* ✅ LIENS */
+.contact-text-link {
+  color: var(--text-mid);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-text-link:hover {
+  color: var(--sage-dark) !important;
+}
+
+.contact-text-link:hover ~ .contact-icon {
+  background: var(--sage-dark) !important;
+  color: #fff !important;
+  transform: scale(1.1);
+}
+
+/* ✅ HORAIRE */
+.contact-text-link .rdv-time {
+  text-decoration: none !important;
+  color: var(--text-light) !important;
+  font-weight: 400;
+  font-size: 0.88rem;
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.contact-text-link strong {
+  display: block;
+  margin-bottom: 0.1rem;
+  color: var(--sage-dark);
+  font-size: 1rem;
+}
+
+/* Hover RDV */
+.contact-text-link:hover strong {
+  text-decoration: underline;
+  animation-play-state: paused;  /* ✅ Pause clignotement */
+}
+
+.contact-text-link:hover .rdv-time {
+  color: var(--text-light) !important;
+  text-decoration: none !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+  
+  
+    /* FOOTER SECTION */
+    footer {
+      background: var(--sage-dark);
+      color: #fff;
+      padding: 4rem 6% 2rem;
+      font-size: 0.9rem;
+    }
+
+   .footer-grid {
+  display: flex;
+  justify-content: center;     /* ✅ Centre le contenu restant */
+  gap: 3rem;
+  margin-bottom: 3rem;}
+
+@media (max-width: 768px) {.footer-grid {
+    flex-direction: column;    /* ✅ Colonne sur mobile */
+    align-items: center;
+    text-align: center;
+  }
+  }
+
+
+    .footer-col h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+
+    .social-icon:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.5rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+
+.footer-links {
+  list-style: none;
+  display: flex;           /* ✅ Alignement horizontal */
+  flex-wrap: wrap;         /* Passer à la ligne si trop petit */
+  gap: 1.5rem;            /* Espace entre les liens */
+}
+
+.footer-links li {
+  margin-bottom: 0;        /* Plus de marge verticale */
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 0.2s;
+  white-space: nowrap;     /* Évite le retour à la ligne dans les liens */
+}
+
+.footer-links a:hover {
+  color: # max-width: 992px) {
+  .hero-visual {
+    position: static !important;     /* ✅ Statique sur tablette */
+    width: 100%;
+    margin-top: 3rem;
+    max-width: 100%;
+  }
+  
+  .hero-card {
+    max-width: 350px;                /* ✅ Plus petit */
+    margin: 0 auto;
+  }
+  
+  .floating-badge {
+    position: relative !important;   /* ✅ Relatif sur mobile */
+    margin: 0.5rem auto;
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-card {
+    padding: 2rem 1.5rem;            /* ✅ Encore plus compact */
+    max-width: 300px;
+  }
+  
+  .hero-card-img {
+    height: 180px;
+    font-size: 3.5rem;
+  }
+}
+
+      .hero-content {
+        max-width: 100%;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 6%;
+        background: rgba(255, 253, 249, 0.98);
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      nav {
+        padding: 1rem 4%;
+      }
+
+      .hero {
+        padding: 6rem 4% 3rem;
+      }
+
+      section {
+        padding: 4rem 4%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-tag {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.8rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        text-align: center;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+
+      .section-sub {
+        font-size: 0.95rem;
+      }
+
+      .stat-number {
+        font-size: 2.2rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">
+      Fathia Ben Kouider<span>.</span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#home">Accueil</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#testimonials">Témoignages</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <button class="hamburger" aria-label="Menu mobile" aria-expanded="false" aria-controls="primary-navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">Bien-être mental</div>
+      <h1>Retrouvez votre <em>équilibre</em> intérieur</h1>
+      <p>
+        Un accompagnement bienveillant et personnalisé pour vous aider à surmonter les défis de la vie,
+        à réduire le stress et à retrouver une paix intérieure durable.
+      </p>
+      <div class="hero-buttons">
+        <a href="#services" class="btn-primary">Mes services</a>
+        <a href="#contact" class="btn-secondary">Contactez-moi</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-img" aria-label="Icône de méditation">🧘</div>
+        <h3>Thérapie individuelle</h3>
+        <p>Des séances personnalisées pour explorer vos émotions et développer votre résilience.</p>
+
+        <div class="floating-badge badge-top">
+          <span class="badge-icon" aria-hidden="true">⭐</span>
+          <span>4.9/5</span>
+        </div>
+
+        <div class="floating-badge badge-bottom">
+          <span class="badge-icon" aria-hidden="true">⏱️</span>
+          <span>60 min</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS SECTION -->
+  <div class="stats">
+    <div class="stat-item">
+      <span class="stat-number">1500+</span>
+      <span class="stat-label">Clients aidés</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">12</span>
+      <span class="stat-label">Années d'expérience</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">98%</span>
+      <span class="stat-label">Satisfaction</span>
+    </div>
+  </div>
+
+  <!-- SERVICES SECTION -->
+  <section id="services" class="services">
+    <div class="services-header">
+      <div class="section-tag">Mes services</div>
+      <h2 class="section-title">Des <em>approches</em> adaptées à vos besoins</h2>
+      <p class="section-sub">
+        Chaque parcours est unique. Je vous accompagne avec des méthodes éprouvées et personnalisées.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon" aria-label="Icône cerveau">🧠</div>
+        <h3>Thérapie cognitive</h3>
+        <p>
+          Identifiez et modifiez les schémas de pensée négatifs pour améliorer votre bien-être émotionnel.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon" aria-label="Icône bulle de dialogue">💬</div>
+        <h3>Thérapie relationnelle</h3>
+        <p>
+          Améliorez vos relations interpersonnelles et développez votre communication authentique.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon" aria-label="Icône feuille">🌿</div>
+        <h3>Thérapie centrée sur la pleine conscience</h3>
+        <p>
+          Apprenez à vivre pleinement le moment présent pour réduire le stress et l'anxiété.
+        </p>
+      </div>
+    </div>
+  </section>
+<!-- ABOUT SECTION -->
+<section id="about" class="about">
+  <div class="about-visual">
+    <picture/>
+      <img
+        src="photo-therapeute.png"
+        alt="Photo du thérapeute"
+        class="about-img"
+        loading="lazy"
+      />
+    </picture>
+
+    <div class="about-badge">
+      <span class="num">12</span>
+      <span class="lbl">Années d'expérience</span>
+    </div>
+  </div>
+
+  <div class="about-content">
+    <div class="section-tag">À propos de moi</div>
+    <h2 class="section-title">Votre <em>accompagnement</em> bienveillant</h2>
+    <p class="section-sub">
+      En tant que thérapeute certifié, je mets tout en œuvre pour vous offrir un espace sécurisé,
+      sans jugement, où vous pouvez vous exprimer librement.
+    </p>
+
+    <ul class="about-list">
+      <li>Approche centrée sur la personne et l'écoute active</li>
+      <li>Techniques basées sur les dernières recherches en psychologie</li>
+      <li>Confidentialité et éthique au cœur de ma pratique</li>
+      <li>Disponibilité pour des séances en présentiel ou en ligne</li>
+    </ul>
+
+    <a href="#contact" class="btn-primary">Prendre rendez-vous</a>
+  </div>
+</section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section id="testimonials" class="testimonials">
+    <div class="testimonials-header">
+      <div class="section-tag">Témoignages</div>
+      <h2 class="section-title">Ce que disent mes <em>patients</em></h2>
+      <p class="section-sub">Des histoires de transformation, de résilience et de paix retrouvée.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-quote">
+          "Grâce à cette thérapie, j'ai appris à me reconnecter à moi-même. C'est une véritable renaissance."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar" aria-label="Avatar de Marie L.">M</div>
+          <div>
+            <div class="testimonial-author-name">Marie L.</div>
+            <div class="testimonial-author-role">Patiente depuis 6 mois</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-quote">
+          "L'écoute et la bienveillance de ma thérapeute m'ont permis de traverser une période très difficile avec sérénité."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar" aria-label="Avatar de Thomas R.">T</div>
+          <div>
+            <div class="testimonial-author-name">Thomas R.</div>
+            <div class="testimonial-author-role">Patient depuis 1 an</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-quote">
+          "Je recommande vivement ce cabinet. L'ambiance est apaisante et la thérapeute est d'une grande compétence."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar" aria-label="Avatar de Sophie D.">S</div>
+          <div>
+            <div class="testimonial-author-name">Sophie D.</div>
+            <div class="testimonial-author-role">Patiente depuis 3 mois</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CONTACT SECTION - LIENS COTÉ À CÔTÉ -->
+<section id="contact" class="contact">
+  <div class="contact-container">
+    <div class="contact-info">
+      <h3>Prenez contact avec moi</h3>
+
+      <div class="contact-item">
+        <div class="contact-icon" aria-hidden="true">📍</div>
+        <div class="contact-text">Avenue du Chili 7, 1000 Bruxelles</div>
+      </div>
+
+      <!-- ✅ TÉLÉPHONE - Icône + lien CÔTÉ À CÔTÉ -->
+      <div class="contact-item">
+        <div class="contact-icon" aria-hidden="true">📞</div>
+        <a href="tel:+32470235421" class="contact-text-link">0470.235.421</a>
+      </div>
+
+      <!-- ✅ MAIL - Icône + lien CÔTÉ À CÔTÉ -->
+      <div class="contact-item">
+        <div class="contact-icon" aria-hidden="true">✉️</div>
+        <a href="mailto:F.benKouider@hotmail.com" class="contact-text-link">F.benKouider@hotmail.com</a>
+      </div>
+<!-- RDV - TEXTE clignote -->
+<div class="contact-item">
+  <div class="contact-icon" aria-hidden="true">📅</div>
+  <a href="https://rosa.be/fr/hp/alycia-renoux/?highlight=psychologue" class="contact-text-link" target="_blank">
+    <strong class="rdv-text-blink">Consultation agenda en ligne</strong>  <!-- ✅ CLIGNOTE ICI -->
+    <span class="rdv-time">Lundi & Mercredi 14h30-20h30</span>
+  </a>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      
+      <p style="margin-top: 1rem; color: rgba(255, 255, 255, 0.75); font-size: 0,9rem;">
+        Votre espace de bien-être mental, où l'écoute et la compassion guident chaque pas de votre parcours.
+      </p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Fathia Ben Kouider — Cabinet de Psychothérapie. Tous droits réservés.
+  </div>
+</footer>
+
+  <script>
+    // Menu mobile toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = navLinks.style.display === 'flex';
+        navLinks.style.display = isOpen ? 'none' : 'flex';
+        hamburger.setAttribute('aria-expanded', String(!isOpen));
+      });
+    }
+
+    // Navigation scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (!nav) return;
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scroll for anchor links, en évitant les liens "#"
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', e => {
+        const href = anchor.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+          const targetTop = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+          window.scrollTo({
+            top: targetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+// Animation rehausser sections au scroll
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animate-in');
+    }
+  });
+}, observerOptions);
+
+// Observe toutes les sections
+document.querySelectorAll('section, .stats, .services').forEach(section => {
+  observer.observe(section);
+});
+
+// Trigger hero dès le chargement
+window.addEventListener('load', () => {
+  document.querySelector('.hero')?.classList.add('animate-in');
+});
+
+  </script>
+</body>
+</html>
